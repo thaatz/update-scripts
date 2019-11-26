@@ -38,6 +38,8 @@ move /y "%public%\Desktop\AdwCleaner.lnk" %shortcutsfolder%av>nul
 REM PRODUCTIVITY
 choco upgrade notepadplusplus.install -y
 REM move /y "%public%\Desktop\Notepad++.lnk" %shortcutsfolder%
+choco upgrade firefox -y
+move /y "%public%\Desktop\Firefox.lnk" %shortcutsfolder%>nul
 choco upgrade sumatrapdf.install -y
 
 REM DEV TOOLS
