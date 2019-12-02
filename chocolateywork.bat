@@ -20,20 +20,12 @@ REM choco upgrade vcredist140 -y
 
 REM SYSTEM TOOLS
 choco upgrade ccleaner -y
-move /y "%public%\Desktop\CCleaner.lnk" %shortcutsfolder%>nul
-REM choco upgrade 7zip.install -y
+move /y "%public%\Desktop\CCleaner.lnk" %shortcutsfolder% >nul
 choco upgrade autohotkey.install -y
 choco upgrade open-shell -installArgs ADDLOCAL=StartMenu -y
 choco upgrade qttabbar -y
 choco upgrade winaero-tweaker -y
-move /y "%public%\Desktop\Winaero Tweaker.lnk" %shortcutsfolder%>nul
-rem heidoc iso downloader
-REM choco upgrade windows-iso-downloader -y
-REM choco upgrade rufus -y
-rem aomei backupper
-REM choco upgrade backupper-standard --ignore-checksums -y
-rem minitool partition wizard
-REM choco upgrade partitionwizard -y
+move /y "%public%\Desktop\Winaero Tweaker.lnk" %shortcutsfolder% >nul
 choco upgrade shutup10 -y
 REM installs to C:\ProgramData\chocolatey\bin
 choco upgrade shexview.install -y
@@ -43,9 +35,9 @@ REM installs to C:\ProgramData\chocolatey\bin
 
 REM AV
 REM choco upgrade malwarebytes --ignore-checksums -y
-REM move /y "%public%\Desktop\Malwarebytes.lnk" %shortcutsfolder%av>nul
+REM move /y "%public%\Desktop\Malwarebytes.lnk" %shortcutsfolder%av >nul
 choco upgrade adwcleaner -y
-move /y "%public%\Desktop\AdwCleaner.lnk" %shortcutsfolder%av>nul
+move /y "%public%\Desktop\AdwCleaner.lnk" %shortcutsfolder%\av >nul
 
 REM PRIVACY
 rem private internet access
@@ -57,11 +49,11 @@ REM choco upgrade paint.net -y
 choco upgrade sumatrapdf.install -y
 REM choco upgrade cutepdf -y
 choco upgrade firefox -y
-move /y "%public%\Desktop\Firefox.lnk" %shortcutsfolder%>nul
+move /y "%public%\Desktop\Firefox.lnk" %shortcutsfolder% >nul
 REM choco upgrade chrome -y
 REM choco upgrade vlc -y
 REM move /y "%public%\Desktop\VLC media player.lnk" %shortcutsfolder%>nul
-choco upgrade irfanview -y
+choco install irfanview --params "/assoc=1" -y
 
 REM DEV TOOLS
 choco upgrade notepadplusplus.install -y
