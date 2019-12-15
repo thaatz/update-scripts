@@ -12,6 +12,7 @@ choco upgrade ccleaner -y
 move /y "%public%\Desktop\CCleaner.lnk" %shortcutsfolder% >nul
 choco upgrade revo-uninstaller -y
 choco upgrade speccy -y
+move /y "%public%\Desktop\Speccy.lnk" %shortcutsfolder% >nul
 choco upgrade winaero-tweaker -y
 move /y "%public%\Desktop\Winaero Tweaker.lnk" %shortcutsfolder% >nul
 REM choco upgrade ddu -y
@@ -30,6 +31,7 @@ REM HDD TOOLS
 choco upgrade backupper-standard --ignore-checksum -y
 move /y "%public%\Desktop\AOMEI Backupper Standard.lnk" %shortcutsfolder%\hdd >nul
 choco upgrade partitionwizard -y
+move /y "%public%\Desktop\MiniTool Partition Wizard.lnk" %shortcutsfolder%\hdd >nul
 choco upgrade rufus -y
 choco upgrade etcher -y
 choco upgrade windows-iso-downloader -y
@@ -46,6 +48,7 @@ REM PRIVACY
 choco upgrade pia -y
 choco upgrade tor-browser -y
 move /y "%public%\Desktop\Tor Browser.lnk" %shortcutsfolder% >nul
+move /y "%userprofile%\Desktop\Tor Browser.lnk" %shortcutsfolder% >nul
 
 REM PRODUCTIVITY
 choco upgrade qbittorrent -y
