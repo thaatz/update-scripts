@@ -61,6 +61,7 @@ choco install irfanview --params "/assoc=1" -y
 REM DEV TOOLS
 choco upgrade notepadplusplus.install -y
 choco upgrade vscode -y
+move /y "%public%\Desktop\Visual Studio Code.lnk" %shortcutsfolder% >nul
 choco upgrade sublimemerge -y
 REM choco upgrade git.install --params "/WindowsTerminal /NoShellIntegration" -y
 REM choco upgrade anaconda3 --params "/AddToPath" -y

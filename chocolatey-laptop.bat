@@ -68,6 +68,7 @@ move /y "%public%\Desktop\VLC media player.lnk" %shortcutsfolder% >nul
 
 REM DEV TOOLS
 choco upgrade vscode -y
+move /y "%public%\Desktop\Visual Studio Code.lnk" %shortcutsfolder% >nul
 choco upgrade sublimemerge -y
 choco upgrade git.install --params "/WindowsTerminal /NoShellIntegration" -y
 choco upgrade anaconda3 --params "/AddToPath" -y

@@ -78,6 +78,7 @@ choco upgrade jackett -y
 
 REM DEV TOOLS
 REM choco upgrade vscode -y
+REM move /y "%public%\Desktop\Visual Studio Code.lnk" %shortcutsfolder% >nul
 REM choco upgrade sublimemerge -y
 choco upgrade git.install --params "/WindowsTerminal /NoShellIntegration" -y
 REM choco upgrade python -y
