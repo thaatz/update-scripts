@@ -19,6 +19,7 @@ REM choco upgrade dotnetfx -y
 REM choco upgrade vcredist140 -y
 
 REM SYSTEM TOOLS
+choco upgrade nircmd -y
 choco upgrade ccleaner -y
 move /y "%public%\Desktop\CCleaner.lnk" %shortcutsfolder% >nul
 choco upgrade autohotkey.install -y
@@ -28,10 +29,12 @@ choco upgrade winaero-tweaker -y
 move /y "%public%\Desktop\Winaero Tweaker.lnk" %shortcutsfolder% >nul
 choco upgrade shutup10 -y
 REM installs to C:\ProgramData\chocolatey\bin
+nircmd shortcut "%programdata%\chocolatey\bin\OOSU10.exe" "%shortcutsfolder%" "OOSU10.exe - Shortcut"
 choco upgrade shexview.install -y
 REM installs to C:\Program Files (x86)\NirSoft\ShellExView
 choco upgrade shmnview -y
 REM installs to C:\ProgramData\chocolatey\bin
+nircmd shortcut "%programdata%\chocolatey\bin\shmnview.exe" "%shortcutsfolder%" "shmnview.exe - Shortcut"
 
 REM AV
 REM choco upgrade malwarebytes --ignore-checksums -y

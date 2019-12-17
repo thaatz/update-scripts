@@ -21,6 +21,7 @@ choco upgrade vcredist140 -y
 choco upgrade dotnetfx -y
 
 REM SYSTEM TOOLS
+choco upgrade nircmd -y
 choco upgrade ccleaner -y
 move /y "%public%\Desktop\CCleaner.lnk" %shortcutsfolder% >nul
 choco upgrade revo-uninstaller -y
@@ -39,8 +40,10 @@ choco upgrade shexview.install -y
 REM installs to C:\Program Files (x86)\NirSoft\ShellExView
 choco upgrade shmnview -y
 REM installs to C:\ProgramData\chocolatey\bin
+nircmd shortcut "%programdata%\chocolatey\bin\shmnview.exe" "%shortcutsfolder%" "shmnview.exe - Shortcut"
 choco upgrade shutup10 -y
 REM installs to C:\ProgramData\chocolatey\bin
+nircmd shortcut "%programdata%\chocolatey\bin\OOSU10.exe" "%shortcutsfolder%" "OOSU10.exe - Shortcut"
 
 REM HDD TOOLS
 choco upgrade backupper-standard --ignore-checksums -y
