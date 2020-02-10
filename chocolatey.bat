@@ -56,7 +56,8 @@ choco upgrade partitionwizard -y
 move /y "%public%\Desktop\MiniTool Partition Wizard.lnk" %shortcutsfolder%\hdd >nul
 choco upgrade rufus -y
 choco upgrade etcher -y
-choco upgrade windows-iso-downloader -y
+move /y "%userprofile%\Desktop\balenaEtcher.lnk" %shortcutsfolder%\hdd >nul
+choco upgrade windows-iso-downloader --ignore-checksums -y
 move /y "%public%\Desktop\Microsoft Windows and Office ISO Download Tool.lnk" %shortcutsfolder%\hdd >nul
 REM crystaldiskinfo
 
@@ -79,7 +80,7 @@ choco upgrade firefox -y
 move /y "%public%\Desktop\Firefox.lnk" %shortcutsfolder% >nul
 choco upgrade notepadplusplus.install -y
 choco upgrade sumatrapdf.install -y
-choco upgrade cutepdf -y
+choco upgrade cutepdf --ignore-checksums -y
 REM paint.net
 choco install irfanview --params "/assoc=1" -y
 choco upgrade vlc -y
