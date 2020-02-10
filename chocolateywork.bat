@@ -11,6 +11,10 @@ REM if %errorlevel%==0 (
 	REM goto :anaconda_stuff
 REM )
 
+if not exist %shortcutsfolder% mkdir %shortcutsfolder%
+if not exist %shortcutsfolder%\av mkdir %shortcutsfolder%\av
+if not exist %shortcutsfolder%\hdd mkdir %shortcutsfolder%\hdd
+
 choco upgrade chocolatey -y
 choco upgrade chocolatey-core.extension -y
 
@@ -50,7 +54,7 @@ REM choco upgrade qbittorrent -y
 REM PRODUCTIVITY
 REM choco upgrade paint.net -y
 choco upgrade sumatrapdf.install -y
-REM choco upgrade cutepdf -y
+REM choco upgrade cutepdf --ignore-checksums -y
 choco upgrade firefox -y
 move /y "%public%\Desktop\Firefox.lnk" %shortcutsfolder% >nul
 REM choco upgrade chrome -y

@@ -3,6 +3,10 @@ set shortcutsfolder=%userprofile%\Desktop\Programs
 
 pushd %shortcutsfolder%
 
+if not exist %shortcutsfolder% mkdir %shortcutsfolder%
+if not exist %shortcutsfolder%\av mkdir %shortcutsfolder%\av
+if not exist %shortcutsfolder%\hdd mkdir %shortcutsfolder%\hdd
+
 choco upgrade chocolatey -y
 REM choco upgrade chocolatey-core.extension -y
 
@@ -41,7 +45,7 @@ REM choco upgrade partitionwizard -y
 REM move /y "%public%\Desktop\MiniTool Partition Wizard.lnk" %shortcutsfolder%\hdd >nul
 REM choco upgrade rufus -y
 REM choco upgrade etcher -y
-REM choco upgrade windows-iso-downloader -y
+REM choco upgrade windows-iso-downloader --ignore-checksums -y
 REM move /y "%public%\Desktop\Microsoft Windows and Office ISO Download Tool.lnk" %shortcutsfolder%\hdd >nul
 REM crystaldiskinfo
 
@@ -64,7 +68,7 @@ choco upgrade firefox -y
 move /y "%public%\Desktop\Firefox.lnk" %shortcutsfolder% >nul
 choco upgrade notepadplusplus.install -y
 choco upgrade sumatrapdf.install -y
-choco upgrade cutepdf -y
+choco upgrade cutepdf --ignore-checksums -y
 REM paint.net
 choco install irfanview --params "/assoc=1" -y
 choco upgrade vlc -y
