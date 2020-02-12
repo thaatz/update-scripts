@@ -60,7 +60,7 @@ move /y "%public%\Desktop\Firefox.lnk" %shortcutsfolder% >nul 2>nul
 REM choco upgrade chrome -y
 REM choco upgrade vlc -y
 REM move /y "%public%\Desktop\VLC media player.lnk" %shortcutsfolder% >nul 2>nul
-choco install irfanview --params "/assoc=1" -y
+choco upgrade irfanview --params "/assoc=1" -y
 
 REM DEV TOOLS
 choco upgrade notepadplusplus.install -y

@@ -51,7 +51,7 @@ choco upgrade notepadplusplus.install -y
 choco upgrade sumatrapdf.install -y
 REM choco upgrade cutepdf --ignore-checksums -y
 REM paint.net
-REM choco install irfanview --params "/assoc=1" -y
+REM choco upgrade irfanview --params "/assoc=1" -y
 REM choco upgrade vlc -y
 REM move /y "%public%\Desktop\VLC media player.lnk" %shortcutsfolder% >nul 2>nul
 
