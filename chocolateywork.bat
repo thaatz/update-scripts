@@ -52,15 +52,17 @@ REM choco upgrade pia -y
 REM choco upgrade qbittorrent -y
 
 REM PRODUCTIVITY
+REM choco upgrade 7zip.install -y
+choco upgrade firefox -y
+move /y "%public%\Desktop\Firefox.lnk" %shortcutsfolder% >nul 2>nul
 REM choco upgrade paint.net -y
 choco upgrade sumatrapdf.install -y
 REM choco upgrade cutepdf --ignore-checksums -y
-choco upgrade firefox -y
-move /y "%public%\Desktop\Firefox.lnk" %shortcutsfolder% >nul 2>nul
 REM choco upgrade chrome -y
-REM choco upgrade vlc -y
-REM move /y "%public%\Desktop\VLC media player.lnk" %shortcutsfolder% >nul 2>nul
 choco upgrade irfanview --params "/assoc=1" -y
+choco upgrade vlc -y
+move /y "%public%\Desktop\VLC media player.lnk" %shortcutsfolder% >nul 2>nul
+
 
 REM DEV TOOLS
 choco upgrade notepadplusplus.install -y

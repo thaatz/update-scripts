@@ -52,8 +52,8 @@ choco upgrade sumatrapdf.install -y
 REM choco upgrade cutepdf --ignore-checksums -y
 REM paint.net
 REM choco upgrade irfanview --params "/assoc=1" -y
-REM choco upgrade vlc -y
-REM move /y "%public%\Desktop\VLC media player.lnk" %shortcutsfolder% >nul 2>nul
+choco upgrade vlc -y
+move /y "%public%\Desktop\VLC media player.lnk" %shortcutsfolder% >nul 2>nul
 
 REM DEV TOOLS
 choco upgrade vscode -y
