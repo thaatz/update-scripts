@@ -39,7 +39,7 @@ nircmd shortcut "%programdata%\chocolatey\bin\shmnview.exe" "%shortcutsfolder%" 
 REM AV
 REM choco upgrade malwarebytes --ignore-checksums -y
 REM move /y "%public%\Desktop\Malwarebytes.lnk" %shortcutsfolder%av >nul 2>nul
-choco upgrade adwcleaner -y
+choco upgrade adwcleaner --ignore-checksums -y
 move /y "%public%\Desktop\AdwCleaner.lnk" %shortcutsfolder%\av >nul 2>nul
 
 REM PRODUCTIVITY
