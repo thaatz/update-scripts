@@ -29,6 +29,7 @@ choco upgrade nircmd -y
 choco upgrade ccleaner -y
 move /y "%public%\Desktop\CCleaner.lnk" %shortcutsfolder% >nul 2>nul
 choco upgrade revo-uninstaller -y
+move /y "%public%\Desktop\Revo Uninstaller.lnk" %shortcutsfolder% >nul 2>nul
 choco upgrade speccy -y
 move /y "%public%\Desktop\Speccy.lnk" %shortcutsfolder% >nul 2>nul
 choco upgrade winaero-tweaker -y
