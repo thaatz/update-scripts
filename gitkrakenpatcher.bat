@@ -2,9 +2,10 @@
 pushd "%~dp0" 2>NUL
 REM requires nodejs, yarn, nircmd, git?,
 REM choco upgrade nircmd -y
-REM choco upgrade nodejs -y
-REM cmd /c refreshenv
-REM choco upgrade yarn
+choco upgrade nodejs -y
+cmd /c refreshenv
+choco upgrade yarn
+cmd /c refreshenv
 REM pause
 REM https://github.com/BoGnY/GitCracken
 
@@ -16,10 +17,10 @@ REM PATCH WITH GITCRACKEN
 cd GitCracken-0.8
 REM allow self signed certificates at bae
 REM https://stackoverflow.com/questions/40033794/yarn-unable-to-verify-the-first-certificate
-yarn config set "strict-ssl" false -g
-yarn install
-yarn build
-yarn run gitcracken patcher
+REM yarn config set "strict-ssl" false -g
+cmd /c yarn install
+cmd /c yarn build
+cmd /c yarn run gitcracken patcher
 
 REM DISABLE THE AUTO UPDATE EXECUTABLE
 ren "%localappdata%\gitkraken\Update.exe" noupdate
@@ -40,3 +41,4 @@ REM https://nircmd.nirsoft.net/shortcut.html
 nircmd shortcut "%localappdata%\gitkraken\%gitkrakenversion%\gitkraken.exe" "~$folder.programs$\Axosoft, LLC" "GitKraken"
 
 pause
+popd
