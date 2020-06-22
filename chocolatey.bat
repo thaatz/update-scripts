@@ -4,6 +4,10 @@ set CheckForUpdatesFirst=True
 REM set CheckForUpdatesFirst to true to have this check for updates before running everything. This can slightly speed things up if there are no chocolatey updates needed
 REM you must set this to false
 
+if not exist %shortcutsfolder% mkdir %shortcutsfolder%
+if not exist %shortcutsfolder%\av mkdir %shortcutsfolder%\av
+if not exist %shortcutsfolder%\hdd mkdir %shortcutsfolder%\hdd
+
 pushd %shortcutsfolder%
 REM echo checking for updates . . .
 REM choco outdated>temp.txt
@@ -12,10 +16,6 @@ REM if %errorlevel%==0 (
 	REM echo chocolatey packages are up to date
 	REM goto :anaconda_stuff
 REM )
-
-if not exist %shortcutsfolder% mkdir %shortcutsfolder%
-if not exist %shortcutsfolder%\av mkdir %shortcutsfolder%\av
-if not exist %shortcutsfolder%\hdd mkdir %shortcutsfolder%\hdd
 
 choco upgrade chocolatey -y
 choco upgrade chocolatey-core.extension -y
@@ -81,6 +81,7 @@ choco upgrade firefox -y
 move /y "%public%\Desktop\Firefox.lnk" %shortcutsfolder% >nul 2>nul
 choco upgrade notepadplusplus.install -y
 choco upgrade sumatrapdf.install -y
+move /y "%public%\Desktop\SumatraPDF.lnk" %shortcutsfolder% >nul 2>nul
 choco upgrade cutepdf --ignore-checksums -y
 REM paint.net
 choco upgrade irfanview --params "/assoc=1" -y

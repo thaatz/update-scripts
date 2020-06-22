@@ -1,11 +1,11 @@
 @echo off
 set shortcutsfolder=%userprofile%\Desktop\Programs
 
-pushd %shortcutsfolder%
-
 if not exist %shortcutsfolder% mkdir %shortcutsfolder%
 if not exist %shortcutsfolder%\av mkdir %shortcutsfolder%\av
 if not exist %shortcutsfolder%\hdd mkdir %shortcutsfolder%\hdd
+
+pushd %shortcutsfolder%
 
 choco upgrade chocolatey -y
 REM choco upgrade chocolatey-core.extension -y
@@ -69,6 +69,7 @@ choco upgrade firefox -y
 move /y "%public%\Desktop\Firefox.lnk" %shortcutsfolder% >nul 2>nul
 choco upgrade notepadplusplus.install -y
 choco upgrade sumatrapdf.install -y
+move /y "%public%\Desktop\SumatraPDF.lnk" %shortcutsfolder% >nul 2>nul
 choco upgrade cutepdf --ignore-checksums -y
 REM paint.net
 choco upgrade irfanview --params "/assoc=1" -y

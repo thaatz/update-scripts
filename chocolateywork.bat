@@ -2,7 +2,11 @@
 REM set shortcutsfolder=%~dp0
 set shortcutsfolder=%userprofile%\Desktop\Programs
 
-REM pushd %shortcutsfolder%
+if not exist %shortcutsfolder% mkdir %shortcutsfolder%
+if not exist %shortcutsfolder%\av mkdir %shortcutsfolder%\av
+if not exist %shortcutsfolder%\hdd mkdir %shortcutsfolder%\hdd
+
+pushd %shortcutsfolder%
 REM echo checking for updates . . .
 REM choco outdated>C:\Users\thomanoon.hongsmatip\Desktop\Programs\temp.txt
 REM type "temp.txt" | findstr /C:"Chocolatey has determined 0 package(s) are outdated">nul
@@ -10,10 +14,6 @@ REM if %errorlevel%==0 (
 	REM echo chocolatey packages are up to date
 	REM goto :anaconda_stuff
 REM )
-
-if not exist %shortcutsfolder% mkdir %shortcutsfolder%
-if not exist %shortcutsfolder%\av mkdir %shortcutsfolder%\av
-if not exist %shortcutsfolder%\hdd mkdir %shortcutsfolder%\hdd
 
 choco upgrade chocolatey -y
 choco upgrade chocolatey-core.extension -y
@@ -57,6 +57,7 @@ choco upgrade firefox -y
 move /y "%public%\Desktop\Firefox.lnk" %shortcutsfolder% >nul 2>nul
 REM choco upgrade paint.net -y
 choco upgrade sumatrapdf.install -y
+move /y "%public%\Desktop\SumatraPDF.lnk" %shortcutsfolder% >nul 2>nul
 REM choco upgrade cutepdf --ignore-checksums -y
 REM choco upgrade chrome -y
 choco upgrade irfanview --params "/assoc=1" -y
