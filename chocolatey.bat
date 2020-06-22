@@ -98,10 +98,10 @@ choco upgrade virtualbox --params "/NoDesktopShortcut /ExtensionPack" -y
 REM virutal box guest additions are only for INSIDE a windows VM guest
 REM choco upgrade virtualbox-guest-additions-guest.install
 choco upgrade anaconda3 --params "/AddToPath" -y
+cmd /c refreshenv
 
 :anaconda_stuff
 echo updating anaconda . . .
-REM cmd /c refreshenv
 cmd /c conda update --all -y
 REM python -m pip install --upgrade pip
 

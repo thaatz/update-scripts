@@ -66,6 +66,7 @@ REM choco upgrade virtualbox --params "/NoDesktopShortcut /ExtensionPack" -y
 REM virutal box guest additions are only for INSIDE a windows VM guest
 REM choco upgrade virtualbox-guest-additions-guest.install
 REM choco upgrade anaconda3 --params "/AddToPath" -y
+REM cmd /c refreshenv
 
 :anaconda_stuff
 echo updating anaconda . . .

@@ -72,6 +72,7 @@ move /y "%public%\Desktop\Visual Studio Code.lnk" %shortcutsfolder% >nul 2>nul
 choco upgrade sublimemerge -y
 REM choco upgrade git.install --params "/WindowsTerminal /NoShellIntegration" -y
 REM choco upgrade anaconda3 --params "/AddToPath" -y
+REM cmd /c refreshenv
 
 REM anaconda
 :anaconda_stuff
