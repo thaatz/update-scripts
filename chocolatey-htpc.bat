@@ -16,6 +16,7 @@ choco upgrade dotnetfx -y
 
 REM SYSTEM TOOLS
 choco upgrade nircmd -y
+cmd /c refreshenv
 choco upgrade ccleaner -y
 move /y "%public%\Desktop\CCleaner.lnk" %shortcutsfolder% >nul 2>nul
 REM choco upgrade revo-uninstaller -y
