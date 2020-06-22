@@ -4,8 +4,8 @@ REM requires nodejs, yarn, nircmd, git?,
 REM choco upgrade nircmd -y
 choco upgrade nodejs -y
 cmd /c refreshenv
-choco upgrade yarn
-cmd /c refreshenv
+choco upgrade yarn -y
+call refreshenv
 REM pause
 REM https://github.com/BoGnY/GitCracken
 
@@ -17,7 +17,7 @@ REM PATCH WITH GITCRACKEN
 cd GitCracken-0.8
 REM allow self signed certificates at bae
 REM https://stackoverflow.com/questions/40033794/yarn-unable-to-verify-the-first-certificate
-REM yarn config set "strict-ssl" false -g
+REM cmd /c yarn config set "strict-ssl" false -g
 cmd /c yarn install
 cmd /c yarn build
 cmd /c yarn run gitcracken patcher
@@ -36,7 +36,7 @@ for /F "delims= eol=|" %%f in ('
 )
 
 REM CHANGE THE START MENU SHORTCUT SO IT NO LONGER POINTS TO UPDATE.EXE
-del "%appdata%\Microsoft\Windows\Start Menu\Programs\Axosoft, LLC\GitKraken.lnk"
+del "%appdata%\Microsoft\Windows\Start Menu\Programs\Axosoft, LLC\GitKraken.lnk" >nul 2>nul
 REM https://nircmd.nirsoft.net/shortcut.html
 nircmd shortcut "%localappdata%\gitkraken\%gitkrakenversion%\gitkraken.exe" "~$folder.programs$\Axosoft, LLC" "GitKraken"
 
