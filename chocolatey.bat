@@ -26,7 +26,7 @@ choco upgrade dotnetfx -y
 
 REM SYSTEM TOOLS
 choco upgrade nircmd -y
-cmd /c refreshenv
+REM cmd /c refreshenv REM cmd environment doesnt actually need to be refreshed to call nircmd after install
 choco upgrade ccleaner -y
 move /y "%public%\Desktop\CCleaner.lnk" %shortcutsfolder% >nul 2>nul
 choco upgrade revo-uninstaller -y
@@ -82,7 +82,7 @@ choco upgrade firefox -y
 move /y "%public%\Desktop\Firefox.lnk" %shortcutsfolder% >nul 2>nul
 choco upgrade notepadplusplus.install -y
 choco upgrade sumatrapdf.install -y
-move /y "%public%\Desktop\SumatraPDF.lnk" %shortcutsfolder% >nul 2>nul
+move /y "%userprofile%\Desktop\SumatraPDF.lnk" %shortcutsfolder% >nul 2>nul
 choco upgrade cutepdf --ignore-checksums -y
 REM paint.net
 choco upgrade irfanview --params "/assoc=1" -y

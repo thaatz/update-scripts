@@ -24,7 +24,7 @@ REM choco upgrade vcredist140 -y
 
 REM SYSTEM TOOLS
 choco upgrade nircmd -y
-cmd /c refreshenv
+REM cmd /c refreshenv REM cmd environment doesnt actually need to be refreshed to call nircmd after install
 choco upgrade ccleaner -y
 move /y "%public%\Desktop\CCleaner.lnk" %shortcutsfolder% >nul 2>nul
 choco upgrade autohotkey.install -y
@@ -58,7 +58,7 @@ choco upgrade firefox -y
 move /y "%public%\Desktop\Firefox.lnk" %shortcutsfolder% >nul 2>nul
 REM choco upgrade paint.net -y
 choco upgrade sumatrapdf.install -y
-move /y "%public%\Desktop\SumatraPDF.lnk" %shortcutsfolder% >nul 2>nul
+move /y "%userprofile%\Desktop\SumatraPDF.lnk" %shortcutsfolder% >nul 2>nul
 REM choco upgrade cutepdf --ignore-checksums -y
 REM choco upgrade chrome -y
 choco upgrade irfanview --params "/assoc=1" -y
@@ -77,6 +77,7 @@ REM cmd /c refreshenv
 
 REM anaconda
 :anaconda_stuff
+REM cmd /c conda update anaconda -y REM fresh install from SCCM requires anaconda update
 cmd /c conda update --all -y
 REM cmd /c conda clean --all -y
 REM pip-review --trusted-host pypi.org --trusted-host files.pythonhosted.org --local --auto
