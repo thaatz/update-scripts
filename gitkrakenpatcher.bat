@@ -2,20 +2,25 @@
 pushd "%~dp0" 2>NUL
 echo. [*] Updating prerequisites . . .
 REM requires nodejs, yarn, nircmd, git?,
-REM choco upgrade nircmd -y
-choco upgrade nodejs -y
+REM choco upgrade git.install --params "/WindowsTerminal /NoShellIntegration" -y
+choco upgrade nircmd nodejs -y
 cmd /c refreshenv
 choco upgrade yarn -y
 call refreshenv
-REM pause
-REM https://github.com/BoGnY/GitCracken
 
-REM INSTALL
+REM INSTALL GITKRAKEN HERE?
 
-REM git clone maybe?
+REM or https://github.com/BoGnY/GitCracken
+IF exist GitCracken (
+	cd GitCracken
+	git pull
+) ELSE (
+	git clone https://github.com/5cr1pt/GitCracken
+	cd GitCracken
+)
 
 REM PATCH WITH GITCRACKEN
-cd GitCracken-0.8
+REM cd GitCracken-0.8
 REM allow self signed certificates at bae
 REM https://stackoverflow.com/questions/40033794/yarn-unable-to-verify-the-first-certificate
 REM cmd /c yarn config set "strict-ssl" false -g
