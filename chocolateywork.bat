@@ -1,26 +1,13 @@
 @echo off
-REM set shortcutsfolder=%~dp0
-set shortcutsfolder=%userprofile%\Desktop\Programs
+pushd "%~dp0" 2>NUL
 
-if not exist %shortcutsfolder% mkdir %shortcutsfolder%
-if not exist %shortcutsfolder%\av mkdir %shortcutsfolder%\av
-if not exist %shortcutsfolder%\hdd mkdir %shortcutsfolder%\hdd
-
-pushd %shortcutsfolder%
-REM echo checking for updates . . .
-REM choco outdated>C:\Users\thomanoon.hongsmatip\Desktop\Programs\temp.txt
-REM type "temp.txt" | findstr /C:"Chocolatey has determined 0 package(s) are outdated">nul
-REM if %errorlevel%==0 (
-	REM echo chocolatey packages are up to date
-	REM goto :anaconda_stuff
-REM )
+call common\directorysetup.bat
 
 choco upgrade chocolatey -y
-choco upgrade chocolatey-core.extension -y
 
 REM RUNTIMES
-REM choco upgrade dotnetfx -y
-REM choco upgrade vcredist140 -y
+REM call common\runtimes.bat REM chocolatey vcredist140 dotnetf
+REM dont install vcredist140 dotnetf in this setup yet?
 
 REM SYSTEM TOOLS
 choco upgrade nircmd -y
@@ -53,24 +40,15 @@ REM choco upgrade pia -y
 REM choco upgrade qbittorrent -y
 
 REM PRODUCTIVITY
+call common\commonproductivity.bat REM firefox, notepadplusplus, sumatrapdf, vlc
 REM choco upgrade 7zip.install -y
-choco upgrade firefox -y
-move /y "%public%\Desktop\Firefox.lnk" %shortcutsfolder% >nul 2>nul
 REM choco upgrade paint.net -y
-choco upgrade sumatrapdf.install -y
-move /y "%userprofile%\Desktop\SumatraPDF.lnk" %shortcutsfolder% >nul 2>nul
 REM choco upgrade cutepdf --ignore-checksums -y
 REM choco upgrade chrome -y
 choco upgrade irfanview --params "/assoc=1" -y
-choco upgrade vlc -y
-move /y "%public%\Desktop\VLC media player.lnk" %shortcutsfolder% >nul 2>nul
-
 
 REM DEV TOOLS
-choco upgrade notepadplusplus.install -y
-choco upgrade vscode -y
-move /y "%public%\Desktop\Visual Studio Code.lnk" %shortcutsfolder% >nul 2>nul
-choco upgrade sublimemerge -y
+call common\commondevtools.bat REM vscode sublimemerge
 REM choco upgrade git.install --params "/WindowsTerminal /NoShellIntegration" -y
 REM choco upgrade anaconda3 --params "/AddToPath" -y
 REM cmd /c refreshenv

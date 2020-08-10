@@ -1,28 +1,12 @@
 @echo off
-set shortcutsfolder=%userprofile%\Desktop\Programs
-set CheckForUpdatesFirst=True
-REM set CheckForUpdatesFirst to true to have this check for updates before running everything. This can slightly speed things up if there are no chocolatey updates needed
-REM you must set this to false
+pushd "%~dp0" 2>NUL
 
-if not exist %shortcutsfolder% mkdir %shortcutsfolder%
-if not exist %shortcutsfolder%\av mkdir %shortcutsfolder%\av
-if not exist %shortcutsfolder%\hdd mkdir %shortcutsfolder%\hdd
+call common\directorysetup.bat
 
-pushd %shortcutsfolder%
-REM echo checking for updates . . .
-REM choco outdated>temp.txt
-REM type "temp.txt" | findstr /C:"Chocolatey has determined 0 package(s) are outdated">nul
-REM if %errorlevel%==0 (
-	REM echo chocolatey packages are up to date
-	REM goto :anaconda_stuff
-REM )
-
-choco upgrade chocolatey -y
-choco upgrade chocolatey-core.extension -y
+REM choco upgrade chocolatey-core.extension -y
 
 REM RUNTIMES
-choco upgrade vcredist140 -y
-choco upgrade dotnetfx -y
+call common\runtimes.bat REM chocolatey vcredist140 dotnetf
 
 REM SYSTEM TOOLS
 choco upgrade nircmd -y
@@ -76,23 +60,15 @@ move /y "%public%\Desktop\Tor Browser.lnk" %shortcutsfolder% >nul 2>nul
 move /y "%userprofile%\Desktop\Tor Browser.lnk" %shortcutsfolder% >nul 2>nul
 
 REM PRODUCTIVITY
+call common\commonproductivity.bat REM firefox, notepadplusplus, sumatrapdf, vlc
 choco upgrade qbittorrent -y
 choco upgrade 7zip.install -y
-choco upgrade firefox -y
-move /y "%public%\Desktop\Firefox.lnk" %shortcutsfolder% >nul 2>nul
-choco upgrade notepadplusplus.install -y
-choco upgrade sumatrapdf.install -y
-move /y "%userprofile%\Desktop\SumatraPDF.lnk" %shortcutsfolder% >nul 2>nul
 choco upgrade cutepdf --ignore-checksums -y
 REM paint.net
 choco upgrade irfanview --params "/assoc=1" -y
-choco upgrade vlc -y
-move /y "%public%\Desktop\VLC media player.lnk" %shortcutsfolder% >nul 2>nul
 
 REM DEV TOOLS
-choco upgrade vscode -y
-move /y "%public%\Desktop\Visual Studio Code.lnk" %shortcutsfolder% >nul 2>nul
-choco upgrade sublimemerge -y
+call common\commondevtools.bat REM vscode sublimemerge
 choco upgrade git.install --params "/WindowsTerminal /NoShellIntegration" -y
 REM choco upgrade python -y
 choco upgrade virtualbox --params "/NoDesktopShortcut /ExtensionPack" -y

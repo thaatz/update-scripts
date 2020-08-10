@@ -1,17 +1,10 @@
 @echo off
-set shortcutsfolder=%userprofile%\Desktop\Programs
+pushd "%~dp0" 2>NUL
 
-if not exist %shortcutsfolder% mkdir %shortcutsfolder%
-if not exist %shortcutsfolder%\av mkdir %shortcutsfolder%\av
-if not exist %shortcutsfolder%\hdd mkdir %shortcutsfolder%\hdd
-
-pushd %shortcutsfolder%
-
-choco upgrade chocolatey -y
+call common\directorysetup.bat
 
 REM RUNTIMES
-choco upgrade vcredist140 -y
-choco upgrade dotnetfx -y
+call common\runtimes.bat REM chocolatey vcredist140 dotnetf
 
 REM SYSTEM TOOLS
 choco upgrade nircmd -y
@@ -63,23 +56,15 @@ move /y "%public%\Desktop\Tor Browser.lnk" %shortcutsfolder% >nul 2>nul
 move /y "%userprofile%\Desktop\Tor Browser.lnk" %shortcutsfolder% >nul 2>nul
 
 REM PRODUCTIVITY
+call common\commonproductivity.bat REM firefox, notepadplusplus, sumatrapdf, vlc
 choco upgrade qbittorrent -y
 choco upgrade 7zip.install -y
-choco upgrade firefox -y
-move /y "%public%\Desktop\Firefox.lnk" %shortcutsfolder% >nul 2>nul
-choco upgrade notepadplusplus.install -y
-choco upgrade sumatrapdf.install -y
-move /y "%userprofile%\Desktop\SumatraPDF.lnk" %shortcutsfolder% >nul 2>nul
 choco upgrade cutepdf --ignore-checksums -y
 REM paint.net
 choco upgrade irfanview --params "/assoc=1" -y
-choco upgrade vlc -y
-move /y "%public%\Desktop\VLC media player.lnk" %shortcutsfolder% >nul 2>nul
 
 REM DEV TOOLS
-choco upgrade vscode -y
-move /y "%public%\Desktop\Visual Studio Code.lnk" %shortcutsfolder% >nul 2>nul
-choco upgrade sublimemerge -y
+call common\commondevtools.bat REM vscode sublimemerge
 choco upgrade git.install --params "/WindowsTerminal /NoShellIntegration" -y
 choco upgrade anaconda3 --params "/AddToPath" -y
 cmd /c refreshenv

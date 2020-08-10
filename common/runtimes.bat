@@ -1,0 +1,1 @@
+choco upgrade chocolatey vcredist140 dotnetfx -y
