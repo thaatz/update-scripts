@@ -12,11 +12,11 @@ REM INSTALL GITKRAKEN HERE?
 
 REM or https://github.com/BoGnY/GitCracken
 IF exist GitCracken (
-	cd GitCracken
+	cd GitCracken\GitCracken
 	git pull
 ) ELSE (
 	git clone https://github.com/5cr1pt/GitCracken
-	cd GitCracken
+	cd GitCracken\GitCracken
 )
 
 REM PATCH WITH GITCRACKEN
