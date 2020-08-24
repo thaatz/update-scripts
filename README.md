@@ -11,3 +11,4 @@ most of the software is listed on their own lines so i can easily choose which s
   - https://chocolatey.org/docs/commandsupgrade
 - maybe in the future i should make use of `choco pin` to aleveate this issue?
   - https://chocolatey.org/docs/how-to-install-upgrade-package-without-scripts
+- To have choco remember parameters on upgrade use `choco feature enable -n=useRememberedArgumentsForUpgrades`
