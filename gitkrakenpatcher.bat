@@ -4,7 +4,7 @@ echo. [*] Updating prerequisites . . .
 REM requires nodejs, yarn, nircmd, git?,
 REM choco upgrade git.install --params "/WindowsTerminal /NoShellIntegration" -y
 choco upgrade nircmd nodejs -y
-cmd /c refreshenv
+call refreshenv
 choco upgrade yarn -y
 call refreshenv
 

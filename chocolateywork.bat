@@ -51,7 +51,7 @@ REM DEV TOOLS
 call common\commondevtools.bat REM vscode sublimemerge
 REM choco upgrade git.install --params "/WindowsTerminal /NoShellIntegration" -y
 REM choco upgrade anaconda3 --params "/AddToPath" -y
-REM cmd /c refreshenv
+REM call refreshenv
 
 REM anaconda
 :anaconda_stuff
