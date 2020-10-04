@@ -1,4 +1,17 @@
 # use `chmod +x gitkrakenpatcher.sh`
+
+# Detect Linux or Mac
+# https://stackoverflow.com/questions/3466166/how-to-check-if-running-in-cygwin-mac-or-linux
+if [ "$(uname)" == "Darwin" ]; then
+	machine=Mac
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+	machine=Linux
+elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
+	machine=Win32
+elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ]; then
+	machine=Win64
+fi
+
 echo ""
 echo " [*] Updating prerequisites . . ."
 # REM requires nodejs, yarn, nircmd, git?,
@@ -8,43 +21,57 @@ echo " [*] Updating prerequisites . . ."
 # choco upgrade yarn -y
 # call refreshenv
 
-sudo apt update
-
 # INSTALL NODE.JS
-sudo apt install nodejs
-# https://unix.stackexchange.com/questions/26695/refresh-env-variables-after-editing-bashrc-file
-source ~/.bashrc
+if [ $machine == "Linux" ]; then
+	sudo apt update
+	sudo apt install nodejs
+	# https://unix.stackexchange.com/questions/26695/refresh-env-variables-after-editing-bashrc-file
+	source ~/.bashrc
+elif [ $machine == "Mac" ]; then
+	brew update
+	brew install node
+fi
 
 # INSTALL YARN
-# https://medium.com/@chillypenguin/chromebook-linux-apps-for-web-developers-902186f49b60
-# https://classic.yarnpkg.com/en/docs/install/#debian-stable
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-sudo apt update && sudo apt install yarn
-
-source ~/.bashrc
+if [ $machine == "Linux" ]; then
+	# https://medium.com/@chillypenguin/chromebook-linux-apps-for-web-developers-902186f49b60
+	# https://classic.yarnpkg.com/en/docs/install/#debian-stable
+	curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+	echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+	sudo apt update && sudo apt install yarn
+	source ~/.bashrc
+elif [ $machine == "Mac" ]; then
+	brew install yarn
+fi
 
 # REM INSTALL GITKRAKEN HERE?
 # https://support.gitkraken.com/how-to-install/
 # wget https://release.gitkraken.com/linux/gitkraken-amd64.deb
 # sudo dpkg -i gitkraken-amd64.deb
+# this would only work for updates. if initial install gitkraken must be run at least once
 
 # https://www.cyberciti.biz/faq/howto-check-if-a-directory-exists-in-a-bash-shellscript/
 # REM or https://github.com/BoGnY/GitCracken
-if [ -d "/path/to/dir" ] 
+if [ -d "GitCracken/" ] 
 then
-	cd GitCracken\GitCracken
+	cd GitCracken/GitCracken
 	git pull
 else
 	git clone https://github.com/5cr1pt/GitCracken
-	cd GitCracken\GitCracken
+	cd GitCracken/GitCracken
 fi
 
 # REM PATCH WITH GITCRACKEN
 # REM cd GitCracken-0.8
-bash -c yarn install
-bash -c yarn build
-bash -c yarn run gitcracken patcher
+if [ $machine == "Linux" ]; then
+	bash -c yarn install
+	bash -c yarn build
+	bash -c yarn run gitcracken patcher
+elif [ $machine == "Mac" ]; then
+	yarn install
+	yarn build
+	yarn run gitcracken patcher
+fi
 
 # I dont think the linux version has an auto updater so maybe dont need to worry about this stuff
 # REM DISABLE THE AUTO UPDATE EXECUTABLE
