@@ -1,4 +1,18 @@
 # use `chmod +x gitkrakenpatcher.sh`
+# or try `chmod 755 ./gitkrakenpatcher.sh` for mac
+
+# ADDITIONAL STEPS FOR MAC
+# install homebrew https://brew.sh/
+# `sudo nano /etc/hosts`
+# 127.0.0.1 release.axocdn.com
+# try
+# echo "127.0.0.1 release.axocdn.com" | sudo tee --append /etc/hosts
+# maybe https://gist.github.com/asimzeeshan/a813766d627684a5cd56421ba6aace99
+# https://gist.github.com/ryanmaclean/107cb7b7105fd20d2e87
+
+# maybe some extra things to add for linux
+# (delete yarn stuff, install from tar, more specific way to run patcher)
+# https://github.com/5cr1pt/GitCracken/issues/23
 
 # Detect Linux or Mac
 # https://stackoverflow.com/questions/3466166/how-to-check-if-running-in-cygwin-mac-or-linux
@@ -16,10 +30,6 @@ echo ""
 echo " [*] Updating prerequisites . . ."
 # REM requires nodejs, yarn, nircmd, git?,
 # REM choco upgrade git.install --params "/WindowsTerminal /NoShellIntegration" -y
-# choco upgrade nircmd nodejs -y
-# call refreshenv
-# choco upgrade yarn -y
-# call refreshenv
 
 # INSTALL NODE.JS
 if [ $machine == "Linux" ]; then
@@ -73,35 +83,31 @@ elif [ $machine == "Mac" ]; then
 	yarn run gitcracken patcher
 fi
 
-# I dont think the linux version has an auto updater so maybe dont need to worry about this stuff
-# REM DISABLE THE AUTO UPDATE EXECUTABLE
-# ren "%localappdata%\gitkraken\Update.exe" noupdate
+# DISABLE AUTO UPDATE
+# I dont think the linux version has an auto updater so maybe dont need to worry about this stuff?
+# https://gist.github.com/asimzeeshan/a813766d627684a5cd56421ba6aace99
+if [ $machine == "Mac" ]; then
+	ETC_HOSTS=/etc/hosts
+	IP="127.0.0.1"
+	HOSTNAME=release.axocdn.com
+	HOSTS_LINE="$IP\t$HOSTNAME"
+    if [ -n "$(grep $HOSTNAME /etc/hosts)" ]
+        then
+            echo "$HOSTNAME already exists : $(grep $HOSTNAME $ETC_HOSTS)"
+        else
+            echo "Adding $HOSTNAME to your $ETC_HOSTS";
+            # sudo -- sh -c -e "echo '$HOSTS_LINE' >> /etc/hosts";
+			# echo "127.0.0.1 release.axocdn.com" | sudo tee --append /etc/hosts
+			echo "$HOSTS_LINE" | sudo tee --append /etc/hosts
 
-# REM Find the latest GitKraken app version number
-# REM https://stackoverflow.com/questions/57066888/file-name-pattern-matching-in-windows-command-line
-# REM https://superuser.com/questions/570760/find-filenames-with-certain-pattern-on-windows-command-line
-# cd /d "%localappdata%\gitkraken"
-# for /F "delims= eol=|" %%f in ('
-#     dir /B /A:D "app*" ^| findstr "."
-# ') do (
-# 	set gitkrakenversion=%%f
-# )
-
-# REM CHANGE THE START MENU SHORTCUT SO IT NO LONGER POINTS TO UPDATE.EXE
-# echo.
-# echo. [*] Updating shortcuts . . .
-# del "%appdata%\Microsoft\Windows\Start Menu\Programs\Axosoft, LLC\GitKraken.lnk" >nul 2>nul
-# REM https://nircmd.nirsoft.net/shortcut.html
-# nircmd shortcut "%localappdata%\gitkraken\%gitkrakenversion%\gitkraken.exe" "~$folder.programs$\Axosoft, LLC" "GitKraken"
-
-# REM CHANGE THE REGISTRY VALUES FOR THE RIGHT CLICK EXPLORER CONTEXT MENU
-# echo.
-# echo. [*] Updating right-click context menu . . .
-# reg add HKEY_CLASSES_ROOT\directory\background\shell\GitKraken\command /f /d "\"%localappdata%\gitkraken\%gitkrakenversion%\gitkraken.exe\" -p \"%%V\""
-# reg add HKEY_CLASSES_ROOT\directory\shell\GitKraken\command /f /d "\"%localappdata%\gitkraken\%gitkrakenversion%\gitkraken.exe\" -p \"%%1\""
-# REM use the following paths to revert context menu changes
-# REM "\"C:\\Users\\thomanoon.hongsmatip\\AppData\\Local\\gitkraken\\update.exe\" --processStart=gitkraken.exe --process-start-args=\"-p \\\"%V\\\"\""
-# REM "\"C:\\Users\\thomanoon.hongsmatip\\AppData\\Local\\gitkraken\\update.exe\" --processStart=gitkraken.exe --process-start-args=\"-p \\\"%1\\\"\""
+            if [ -n "$(grep $HOSTNAME /etc/hosts)" ]
+                then
+                    echo "$HOSTNAME was added succesfully \n $(grep $HOSTNAME /etc/hosts)";
+                else
+                    echo "Failed to Add $HOSTNAME, Try again!";
+            fi
+    fi
+fi
 
 echo ""
 echo " [!] Finished"
