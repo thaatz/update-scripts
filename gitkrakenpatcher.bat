@@ -9,6 +9,8 @@ choco upgrade yarn -y
 call refreshenv
 
 REM INSTALL GITKRAKEN HERE?
+REM https://release.gitkraken.com/win64/GitKrakenSetup.exe
+REM GitKrakenSetup.exe --silent
 
 REM or https://github.com/BoGnY/GitCracken
 IF exist GitCracken (
