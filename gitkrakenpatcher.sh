@@ -98,7 +98,7 @@ if [ $machine == "Mac" ]; then
             echo "Adding $HOSTNAME to your $ETC_HOSTS";
             # sudo -- sh -c -e "echo '$HOSTS_LINE' >> /etc/hosts";
 			# echo "127.0.0.1 release.axocdn.com" | sudo tee --append /etc/hosts
-			echo "$HOSTS_LINE" | sudo tee --append /etc/hosts
+			echo "$HOSTS_LINE" | sudo tee -a /etc/hosts
 
             if [ -n "$(grep $HOSTNAME /etc/hosts)" ]
                 then
