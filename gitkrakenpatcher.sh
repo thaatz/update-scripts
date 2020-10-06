@@ -89,14 +89,14 @@ fi
 if [ $machine == "Mac" ]; then
 	ETC_HOSTS=/etc/hosts
 	IP="127.0.0.1"
-	HOSTNAME=release.axocdn.com
+	HOSTNAME=release.gitkraken.com
+	# release.gitkraken.com redirects to release.axocdn.com, but if you just block release.gitkraken.com, it will make it so that auto update does not work but you will still be able to download from release.axocdn.com manually instead if you want
 	HOSTS_LINE="$IP\t$HOSTNAME"
     if [ -n "$(grep $HOSTNAME /etc/hosts)" ]
         then
             echo "$HOSTNAME already exists : $(grep $HOSTNAME $ETC_HOSTS)"
         else
             echo "Adding $HOSTNAME to your $ETC_HOSTS";
-            # sudo -- sh -c -e "echo '$HOSTS_LINE' >> /etc/hosts";
 			# echo "127.0.0.1 release.axocdn.com" | sudo tee --append /etc/hosts
 			echo "$HOSTS_LINE" | sudo tee -a /etc/hosts
 
