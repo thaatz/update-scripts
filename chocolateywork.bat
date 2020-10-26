@@ -16,7 +16,7 @@ choco upgrade^
  qttabbar^
  winaero-tweaker^
  shutup10^
- shexview^
+ shexview.install^
  shmnview^
  -y
 
