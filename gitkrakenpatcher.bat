@@ -30,6 +30,17 @@ cmd /c yarn install
 cmd /c yarn build
 cmd /c yarn run gitcracken patcher
 
+if errorlevel 1 (
+	REM sometimes nodejs interpretation will throw an error in dist/src/appId.js and will require you to edit src/appId.ts for error handling prior to building
+	REM https://github.com/5cr1pt/GitCracken/issues/28
+	echo.
+	echo. [*] attempting fallback . . .
+	powershell -Command "(gc src/appID.ts) -replace 'catch', 'catch (e)' | Out-File -encoding ASCII src/appID.ts"
+	cmd /c yarn install
+	cmd /c yarn build
+	cmd /c yarn run gitcracken patcher
+)
+
 REM DISABLE THE AUTO UPDATE EXECUTABLE
 ren "%localappdata%\gitkraken\Update.exe" noupdate
 
