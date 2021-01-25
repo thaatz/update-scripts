@@ -35,14 +35,14 @@ REM nircmd shortcut "%programdata%\chocolatey\bin\OOSU10.exe" "%shortcutsfolder%
 
 REM HDD TOOLS
 REM choco upgrade backupper-standard --ignore-checksums -y
-REM move /y "%public%\Desktop\AOMEI Backupper Standard.lnk" %shortcutsfolder%\hdd >nul 2>nul
+REM move /y "%public%\Desktop\AOMEI Backupper.lnk" %shortcutsfolder%\hdd >nul 2>nul
 REM choco upgrade partitionwizard -y
 REM move /y "%public%\Desktop\MiniTool Partition Wizard.lnk" %shortcutsfolder%\hdd >nul 2>nul
 REM choco upgrade rufus -y
 REM choco upgrade etcher -y
 REM choco upgrade windows-iso-downloader --ignore-checksums -y
 REM move /y "%public%\Desktop\Microsoft Windows and Office ISO Download Tool.lnk" %shortcutsfolder%\hdd >nul 2>nul
-REM crystaldiskinfo
+choco upgrade crystaldiskinfo.install -y
 
 REM AV
 choco upgrade malwarebytes --ignore-checksums -y
