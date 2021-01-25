@@ -54,6 +54,7 @@ choco upgrade pia -y
 choco upgrade tor-browser -y
 move /y "%public%\Desktop\Tor Browser.lnk" %shortcutsfolder% >nul 2>nul
 move /y "%userprofile%\Desktop\Tor Browser.lnk" %shortcutsfolder% >nul 2>nul
+choco upgrade zerotier-one -y
 
 REM PRODUCTIVITY
 call common\commonproductivity.bat REM firefox, notepadplusplus, sumatrapdf, vlc
