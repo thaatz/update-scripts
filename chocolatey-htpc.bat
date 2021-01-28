@@ -43,6 +43,7 @@ REM choco upgrade etcher -y
 REM choco upgrade windows-iso-downloader --ignore-checksums -y
 REM move /y "%public%\Desktop\Microsoft Windows and Office ISO Download Tool.lnk" %shortcutsfolder%\hdd >nul 2>nul
 choco upgrade crystaldiskinfo.install -y
+move /y "%userprofile%\Desktop\CrystalDiskInfo.lnk" %shortcutsfolder%\hdd >nul 2>nul
 
 REM AV
 choco upgrade malwarebytes --ignore-checksums -y

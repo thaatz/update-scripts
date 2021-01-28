@@ -41,7 +41,8 @@ choco upgrade etcher -y
 move /y "%userprofile%\Desktop\balenaEtcher.lnk" %shortcutsfolder%\hdd >nul 2>nul
 choco upgrade windows-iso-downloader --ignore-checksums -y
 move /y "%public%\Desktop\Microsoft Windows and Office ISO Download Tool.lnk" %shortcutsfolder%\hdd >nul 2>nul
-REM choco upgrade crystaldiskinfo.install -y
+choco upgrade crystaldiskinfo.install -y
+move /y "%userprofile%\Desktop\CrystalDiskInfo.lnk" %shortcutsfolder%\hdd >nul 2>nul
 
 REM AV
 choco upgrade malwarebytes --ignore-checksums -y
