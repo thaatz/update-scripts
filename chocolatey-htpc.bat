@@ -43,6 +43,12 @@ REM choco upgrade etcher -y
 REM choco upgrade windows-iso-downloader --ignore-checksums -y
 REM move /y "%public%\Desktop\Microsoft Windows and Office ISO Download Tool.lnk" %shortcutsfolder%\hdd >nul 2>nul
 choco upgrade crystaldiskinfo.install -y
+if errorlevel 1 (
+    echo. [i] Upgrade failed. Process might be running. Attempting to terminate . . .
+    taskkill /im diskinfo32.exe /f
+    taskkill /im diskinfo64.exe /f
+    choco upgrade crystaldiskinfo.install -y
+    )
 move /y "%userprofile%\Desktop\CrystalDiskInfo.lnk" %shortcutsfolder%\hdd >nul 2>nul
 
 REM AV
@@ -62,6 +68,11 @@ call common\commonproductivity.bat REM firefox, notepadplusplus, sumatrapdf, vlc
 choco upgrade qbittorrent -y
 choco upgrade 7zip.install -y
 choco upgrade cutepdf --ignore-checksums -y
+if errorlevel 1 (
+    echo. [i] Upgrade failed. Attempting fallback . . .
+    choco uninstall cutepdf -y
+    choco upgrade cutepdf --ignore-checksums -y
+    )
 REM paint.net
 choco upgrade irfanview --params "/assoc=1" -y
 
