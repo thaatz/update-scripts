@@ -92,7 +92,16 @@ call refreshenv
 
 :anaconda_stuff
 echo updating anaconda . . .
-cmd /c conda update --all -y
+cmd /c conda init
+:: personal preference but i dont want to load the anaconda environment in every powershell window
+cmd /c conda config --set auto_activate_base false
+@REM https://stackoverflow.com/questions/45197777/how-do-i-update-anaconda
+@REM https://docs.anaconda.com/anaconda/install/update-version/
+cmd /c conda update conda
+cmd /c conda update anaconda
+:: for bleeding edge use --all. in my experience this has a tendency to break things though
+:: https://www.anaconda.com/blog/keeping-anaconda-date
+@REM cmd /c conda update --all -y
 REM python -m pip install --upgrade pip
 
 pause
