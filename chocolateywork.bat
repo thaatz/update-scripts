@@ -56,7 +56,10 @@ REM choco upgrade pia -y
 REM choco upgrade qbittorrent -y
 
 REM PRODUCTIVITY
-call common\commonproductivity.bat REM firefox, notepadplusplus, sumatrapdf, vlc
+@REM call common\commonproductivity.bat REM firefox, notepadplusplus, sumatrapdf, vlc
+choco upgrade notepadplusplus.install sumatrapdf.install vlc -y
+move /y "%userprofile%\Desktop\SumatraPDF.lnk" %shortcutsfolder% >nul 2>nul
+move /y "%public%\Desktop\VLC media player.lnk" %shortcutsfolder% >nul 2>nul
 REM choco upgrade 7zip.install -y
 REM choco upgrade paint.net -y
 REM choco upgrade cutepdf --ignore-checksums -y
@@ -64,7 +67,9 @@ REM choco upgrade chrome -y
 choco upgrade irfanview --params "/assoc=1" -y
 
 REM DEV TOOLS
-call common\commondevtools.bat REM vscode sublimemerge
+@REM call common\commondevtools.bat REM vscode sublimemerge
+choco upgrade vscode -y
+move /y "%public%\Desktop\Visual Studio Code.lnk" %shortcutsfolder% >nul 2>nul
 REM choco upgrade git.install --params "/WindowsTerminal /NoShellIntegration" -y
 REM choco upgrade anaconda3 --params "/AddToPath" -y
 REM call refreshenv
