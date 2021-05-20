@@ -3,8 +3,6 @@ pushd "%~dp0" 2>NUL
 
 call common\directorysetup.bat
 
-REM choco upgrade chocolatey-core.extension -y
-
 REM RUNTIMES
 call common\runtimes.bat REM chocolatey vcredist140 dotnetf
 
@@ -22,7 +20,6 @@ move /y "%public%\Desktop\Winaero Tweaker.lnk" %shortcutsfolder% >nul 2>nul
 choco upgrade ddu -y
 choco upgrade teracopy -y
 choco upgrade lockhunter -y
-REM choco upgrade shutup10 -y
 choco upgrade autohotkey.install -y
 choco upgrade open-shell -installArgs ADDLOCAL=StartMenu -y
 choco upgrade qttabbar -y
@@ -89,20 +86,6 @@ REM virutal box guest additions are only for INSIDE a windows VM guest
 REM choco upgrade virtualbox-guest-additions-guest.install
 choco upgrade anaconda3 --params "/AddToPath" -y
 call refreshenv
-
-:anaconda_stuff
-echo updating anaconda . . .
-cmd /c conda init
-:: personal preference but i dont want to load the anaconda environment in every powershell window
-cmd /c conda config --set auto_activate_base false
-@REM https://stackoverflow.com/questions/45197777/how-do-i-update-anaconda
-@REM https://docs.anaconda.com/anaconda/install/update-version/
-cmd /c conda update conda
-cmd /c conda update anaconda
-:: for bleeding edge use --all. in my experience this has a tendency to break things though
-:: https://www.anaconda.com/blog/keeping-anaconda-date
-@REM cmd /c conda update --all -y
-REM python -m pip install --upgrade pip
 
 pause
 popd

@@ -18,18 +18,19 @@ move /y "%public%\Desktop\Speccy.lnk" %shortcutsfolder% >nul 2>nul
 choco upgrade winaero-tweaker -y
 move /y "%public%\Desktop\Winaero Tweaker.lnk" %shortcutsfolder% >nul 2>nul
 REM choco upgrade ddu -y
-REM choco upgrade teracopy -y
+choco upgrade teracopy -y
 REM choco upgrade lockhunter -y
-REM choco upgrade shutup10 -y
-REM nircmd shortcut "%programdata%\chocolatey\bin\OOSU10.exe" "%shortcutsfolder%" "OOSU10.exe - Shortcut"
 choco upgrade autohotkey.install -y
-choco upgrade open-shell -installArgs ADDLOCAL=StartMenu -y
+REM choco upgrade open-shell -installArgs ADDLOCAL=StartMenu -y
 choco upgrade qttabbar -y
 choco upgrade shexview.install -y
 REM installs to C:\Program Files (x86)\NirSoft\ShellExView
 choco upgrade shmnview -y
 REM installs to C:\ProgramData\chocolatey\bin
 nircmd shortcut "%programdata%\chocolatey\bin\shmnview.exe" "%shortcutsfolder%" "shmnview.exe - Shortcut"
+choco upgrade shutup10 -y
+REM installs to C:\ProgramData\chocolatey\bin
+nircmd shortcut "%programdata%\chocolatey\bin\OOSU10.exe" "%shortcutsfolder%" "OOSU10.exe - Shortcut"
 
 REM HDD TOOLS
 choco upgrade backupper-standard --ignore-checksum -y
@@ -79,18 +80,6 @@ choco upgrade irfanview --params "/assoc=1" -y
 REM DEV TOOLS
 call common\commondevtools.bat REM vscode sublimemerge
 choco upgrade git.install --params "/WindowsTerminal /NoShellIntegration" -y
-choco upgrade anaconda3 --params "/AddToPath" -y
-call refreshenv
-cmd /c conda init
-:: personal preference but i dont want to load the anaconda environment in every powershell window
-cmd /c conda config --set auto_activate_base false
-@REM https://stackoverflow.com/questions/45197777/how-do-i-update-anaconda
-@REM https://docs.anaconda.com/anaconda/install/update-version/
-cmd /c conda update conda
-cmd /c conda update anaconda
-:: for bleeding edge use --all. in my experience this has a tendency to break things though
-:: https://www.anaconda.com/blog/keeping-anaconda-date
-@REM cmd /c conda update --all -y
 
 pause
 popd
