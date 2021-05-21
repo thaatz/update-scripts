@@ -45,10 +45,10 @@ nircmd shortcut "%programdata%\chocolatey\bin\shmnview.exe" "%shortcutsfolder%" 
 REM AV
 REM choco upgrade malwarebytes --ignore-checksums -y
 REM move /y "%public%\Desktop\Malwarebytes.lnk" %shortcutsfolder%av >nul 2>nul
-choco pin remove -n=adwcleaner
-choco upgrade adwcleaner --ignore-checksums -y
-choco pin add -n=adwcleaner
-move /y "%public%\Desktop\AdwCleaner.lnk" %shortcutsfolder%\av >nul 2>nul
+@REM choco pin remove -n=adwcleaner
+@REM choco upgrade adwcleaner --ignore-checksums -y
+@REM choco pin add -n=adwcleaner
+@REM move /y "%public%\Desktop\AdwCleaner.lnk" %shortcutsfolder%\av >nul 2>nul
 
 REM PRIVACY
 rem private internet access

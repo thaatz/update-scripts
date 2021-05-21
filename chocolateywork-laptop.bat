@@ -36,10 +36,10 @@ nircmd shortcut "%programdata%\chocolatey\lib\caffeine\caffeine64.exe" "%shortcu
 REM AV
 REM choco upgrade malwarebytes --ignore-checksums -y
 REM move /y "%public%\Desktop\Malwarebytes.lnk" %shortcutsfolder%av >nul 2>nul
-choco pin remove -n=adwcleaner
-choco upgrade adwcleaner --ignore-checksums -y
-choco pin add -n=adwcleaner
-move /y "%public%\Desktop\AdwCleaner.lnk" %shortcutsfolder%\av >nul 2>nul
+@REM choco pin remove -n=adwcleaner
+@REM choco upgrade adwcleaner --ignore-checksums -y
+@REM choco pin add -n=adwcleaner
+@REM move /y "%public%\Desktop\AdwCleaner.lnk" %shortcutsfolder%\av >nul 2>nul
 
 REM PRODUCTIVITY
 @REM call common\commonproductivity.bat REM firefox, notepadplusplus, sumatrapdf, vlc
