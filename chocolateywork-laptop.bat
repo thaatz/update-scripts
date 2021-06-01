@@ -43,9 +43,9 @@ REM move /y "%public%\Desktop\Malwarebytes.lnk" %shortcutsfolder%av >nul 2>nul
 
 REM PRODUCTIVITY
 @REM call common\commonproductivity.bat REM firefox, notepadplusplus, sumatrapdf, vlc
-choco upgrade notepadplusplus.install sumatrapdf.install vlc -y
+choco upgrade notepadplusplus.install sumatrapdf.install -y
 move /y "%userprofile%\Desktop\SumatraPDF.lnk" %shortcutsfolder% >nul 2>nul
-move /y "%public%\Desktop\VLC media player.lnk" %shortcutsfolder% >nul 2>nul
+REM move /y "%public%\Desktop\VLC media player.lnk" %shortcutsfolder% >nul 2>nul
 REM choco upgrade qbittorrent -y
 REM choco upgrade 7zip.install -y
 REM choco upgrade cutepdf --ignore-checksums -y

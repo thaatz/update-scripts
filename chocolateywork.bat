@@ -20,10 +20,6 @@ choco upgrade^
  shmnview^
  -y
 
-choco pin remove -n=open-shell
-choco upgrade open-shell -installArgs ADDLOCAL=StartMenu -y
-choco pin add -n=open-shell
-
 REM SYSTEM TOOLS
 @REM nircmd -y
 REM cmd /c refreshenv REM cmd environment doesnt actually need to be refreshed to call nircmd after install
@@ -57,9 +53,9 @@ REM choco upgrade qbittorrent -y
 
 REM PRODUCTIVITY
 @REM call common\commonproductivity.bat REM firefox, notepadplusplus, sumatrapdf, vlc
-choco upgrade notepadplusplus.install sumatrapdf.install vlc -y
+choco upgrade notepadplusplus.install sumatrapdf.install -y
 move /y "%userprofile%\Desktop\SumatraPDF.lnk" %shortcutsfolder% >nul 2>nul
-move /y "%public%\Desktop\VLC media player.lnk" %shortcutsfolder% >nul 2>nul
+REM move /y "%public%\Desktop\VLC media player.lnk" %shortcutsfolder% >nul 2>nul
 REM choco upgrade 7zip.install -y
 REM choco upgrade paint.net -y
 REM choco upgrade cutepdf --ignore-checksums -y
