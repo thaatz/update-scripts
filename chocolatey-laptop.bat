@@ -79,7 +79,6 @@ choco upgrade irfanview --params "/assoc=1" -y
 
 REM DEV TOOLS
 call common\commondevtools.bat REM vscode sublimemerge
-choco upgrade git.install --params "/WindowsTerminal /NoShellIntegration" -y
 
 pause
 popd

@@ -79,13 +79,9 @@ choco upgrade irfanview --params "/assoc=1" -y
 
 REM DEV TOOLS
 call common\commondevtools.bat REM vscode sublimemerge
-choco upgrade git.install --params "/WindowsTerminal /NoShellIntegration" -y
-REM choco upgrade python -y
 choco upgrade virtualbox --params "/NoDesktopShortcut /ExtensionPack" -y
 REM virutal box guest additions are only for INSIDE a windows VM guest
 REM choco upgrade virtualbox-guest-additions-guest.install
-choco upgrade anaconda3 --params "/AddToPath" -y
-call refreshenv
 
 pause
 popd

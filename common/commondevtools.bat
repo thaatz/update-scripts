@@ -1,5 +1,6 @@
 choco upgrade vscode sublimemerge -y
 move /y "%public%\Desktop\Visual Studio Code.lnk" %shortcutsfolder% >nul 2>nul
+choco upgrade git.install --params "/WindowsTerminal /NoShellIntegration" -y
 
 @REM choco upgrade anaconda3 --params "/AddToPath" -y
 REM i prefer miniconda to anaconda these days because the base install is cleaner
