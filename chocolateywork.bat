@@ -4,7 +4,7 @@ pushd "%~dp0" 2>NUL
 call common\directorysetup.bat
 
 REM RUNTIMES
-REM call common\runtimes.bat REM chocolatey vcredist140 dotnetf
+REM call common\runtimes.bat REM chocolatey vcredist140 dotnetfx dotnet-desktopruntime
 REM dont install vcredist140 dotnetf in this setup yet?
 
 choco upgrade chocolatey -y

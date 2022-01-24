@@ -1,1 +1,1 @@
-choco upgrade chocolatey vcredist140 dotnetfx -y
+choco upgrade chocolatey vcredist140 dotnetfx dotnet-desktopruntime -y
