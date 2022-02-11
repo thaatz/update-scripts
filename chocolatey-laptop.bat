@@ -42,18 +42,7 @@ choco upgrade etcher -y
 move /y "%userprofile%\Desktop\balenaEtcher.lnk" %shortcutsfolder%\hdd >nul 2>nul
 choco upgrade windows-iso-downloader --ignore-checksums -y
 move /y "%public%\Desktop\Microsoft Windows and Office ISO Download Tool.lnk" %shortcutsfolder%\hdd >nul 2>nul
-choco upgrade crystaldiskinfo.install -y
-if errorlevel 1 (
-    echo. [i] Upgrade failed. Process might be running. Attempting to terminate . . .
-    taskkill /im diskinfo32.exe /f
-    if errorlevel 0 diskinfover=32
-    taskkill /im diskinfo64.exe /f
-    if errorlevel 0 diskinfover=64
-    choco upgrade crystaldiskinfo.install -y
-    echo. [i] Restarting CrystalDiskInfo . . .
-    start "" "%programfiles%\CrystalDiskInfo\DiskInfo%diskinfover%.exe"
-    )
-move /y "%userprofile%\Desktop\CrystalDiskInfo.lnk" %shortcutsfolder%\hdd >nul 2>nul
+call common\_crystaldiskinfo.bat
 
 REM AV
 choco upgrade malwarebytes --ignore-checksums -y
