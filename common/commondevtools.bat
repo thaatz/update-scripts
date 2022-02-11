@@ -7,6 +7,7 @@ REM i prefer miniconda to anaconda these days because the base install is cleane
 REM upgrading through choco results in multiple windows uninstall entries.
 REM miniconda really only needs to be installed once. We can update the packages through conda.
 choco install miniconda3 --params "/AddToPath:1" -y
+choco pin add -n miniconda3
 call refreshenv
 cmd /c conda update conda -n base -y
 @REM cmd /c conda init
