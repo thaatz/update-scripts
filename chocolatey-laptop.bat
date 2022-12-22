@@ -51,7 +51,7 @@ choco upgrade adwcleaner --ignore-checksum -y
 move /y "%public%\Desktop\AdwCleaner.lnk" %shortcutsfolder%\av >nul 2>nul
 
 REM PRIVACY
-choco upgrade pia -y
+@REM choco upgrade pia -y
 choco upgrade tor-browser -y
 move /y "%public%\Desktop\Tor Browser.lnk" %shortcutsfolder% >nul 2>nul
 move /y "%userprofile%\Desktop\Tor Browser.lnk" %shortcutsfolder% >nul 2>nul

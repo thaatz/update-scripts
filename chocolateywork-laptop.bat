@@ -43,8 +43,8 @@ REM move /y "%public%\Desktop\Malwarebytes.lnk" %shortcutsfolder%av >nul 2>nul
 
 REM PRODUCTIVITY
 @REM call common\commonproductivity.bat REM firefox, notepadplusplus, sumatrapdf, vlc
-choco upgrade notepadplusplus.install sumatrapdf.install -y
-move /y "%userprofile%\Desktop\SumatraPDF.lnk" %shortcutsfolder% >nul 2>nul
+choco upgrade notepadplusplus.install -y
+@REM move /y "%userprofile%\Desktop\SumatraPDF.lnk" %shortcutsfolder% >nul 2>nul
 REM move /y "%public%\Desktop\VLC media player.lnk" %shortcutsfolder% >nul 2>nul
 REM choco upgrade qbittorrent -y
 REM choco upgrade 7zip.install -y
@@ -54,7 +54,8 @@ REM choco upgrade irfanview --params "/assoc=1" -y
 
 REM DEV TOOLS
 @REM call common\commondevtools.bat REM vscode sublimemerge
-choco upgrade vscode -y
+choco upgrade vscode procexp -y
+call common\_windowsterminal.bat
 move /y "%public%\Desktop\Visual Studio Code.lnk" %shortcutsfolder% >nul 2>nul
 REM choco upgrade git.install --params "/WindowsTerminal /NoShellIntegration" -y
 REM choco upgrade virtualbox --params "/NoDesktopShortcut /ExtensionPack" -y
