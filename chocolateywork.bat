@@ -11,14 +11,15 @@ choco upgrade chocolatey -y
 
 choco upgrade^
  nircmd^
- ccleaner^
- autohotkey.install^
  qttabbar^
  winaero-tweaker^
  shutup10^
  shexview.install^
  shmnview^
  -y
+rem removed
+rem  ccleaner^
+rem  autohotkey.install^
 
 REM SYSTEM TOOLS
 @REM nircmd -y

@@ -9,13 +9,14 @@ call common\runtimes.bat REM chocolatey vcredist140 dotnetfx dotnet-desktoprunti
 REM SYSTEM TOOLS
 choco upgrade^
  nircmd^
- ccleaner^
  winaero-tweaker^
  shutup10^
  shexview.install^
  shmnview^
  caffeine^
  -y
+rem removed
+rem  ccleaner^
 
 @REM ccleaner
 move /y "%public%\Desktop\CCleaner.lnk" %shortcutsfolder% >nul 2>nul
