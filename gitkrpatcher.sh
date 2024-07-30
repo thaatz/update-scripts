@@ -60,16 +60,7 @@ fi
 # sudo dpkg -i gitkraken-amd64.deb
 # this would only work for updates. if initial install gitkraken must be run at least once
 
-# https://www.cyberciti.biz/faq/howto-check-if-a-directory-exists-in-a-bash-shellscript/
-# REM or https://github.com/BoGnY/GitCracken
-if [ -d "GitCracken/" ] 
-then
-	cd GitCracken/GitCracken
-	git pull
-else
-	git clone https://github.com/5cr1pt/GitCracken
-	cd GitCracken/GitCracken
-fi
+cd GitCracken-main
 
 # REM PATCH WITH GITCRACKEN
 # REM cd GitCracken-0.8
