@@ -1,6 +1,6 @@
 @echo off
 pushd "%~dp0" 2>NUL
-
+call common\_detectwinver.bat
 call common\directorysetup.bat
 
 REM RUNTIMES
@@ -9,8 +9,6 @@ call common\runtimes.bat REM chocolatey vcredist140 dotnetfx dotnet-desktoprunti
 REM SYSTEM TOOLS
 choco upgrade nircmd -y
 REM cmd /c refreshenv REM cmd environment doesnt actually need to be refreshed to call nircmd after install
-choco upgrade ccleaner -y
-move /y "%public%\Desktop\CCleaner.lnk" %shortcutsfolder% >nul 2>nul
 choco upgrade revo-uninstaller -y
 move /y "%public%\Desktop\Revo Uninstaller.lnk" %shortcutsfolder% >nul 2>nul
 choco upgrade speccy -y
@@ -21,8 +19,6 @@ choco upgrade ddu -y
 choco upgrade teracopy -y
 choco upgrade lockhunter -y
 choco upgrade autohotkey.install -y
-choco upgrade open-shell -installArgs ADDLOCAL=StartMenu -y
-choco upgrade qttabbar -y
 choco upgrade shexview.install -y
 REM installs to C:\Program Files (x86)\NirSoft\ShellExView
 choco upgrade shmnview -y
@@ -31,6 +27,12 @@ nircmd shortcut "%programdata%\chocolatey\bin\shmnview.exe" "%shortcutsfolder%" 
 choco upgrade shutup10 -y
 REM installs to C:\ProgramData\chocolatey\bin
 nircmd shortcut "%programdata%\chocolatey\bin\OOSU10.exe" "%shortcutsfolder%" "OOSU10.exe - Shortcut"
+
+REM WINDOWS 10 SPECIFIC
+if %OSBuild% geq 22000 (
+    choco upgrade open-shell -installArgs ADDLOCAL=StartMenu -y
+    choco upgrade qttabbar -y
+)
 
 REM HDD TOOLS
 choco upgrade backupper-standard --ignore-checksums -y
@@ -71,7 +73,7 @@ REM paint.net
 choco upgrade irfanview --params "/assoc=1" -y
 
 REM DEV TOOLS
-call common\commondevtools.bat REM vscode sublimemerge
+call common\commondevtools.bat REM vscode procexp windowsterminal miniconda
 choco upgrade virtualbox --params "/NoDesktopShortcut /ExtensionPack" -y
 REM virutal box guest additions are only for INSIDE a windows VM guest
 REM choco upgrade virtualbox-guest-additions-guest.install
