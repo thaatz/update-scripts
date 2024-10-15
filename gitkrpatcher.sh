@@ -63,7 +63,6 @@ fi
 cd GitCracken-main
 
 # REM PATCH WITH GITCRACKEN
-# REM cd GitCracken-0.8
 if [ $machine == "Linux" ]; then
 	bash -c yarn install
 	bash -c yarn build

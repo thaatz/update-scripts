@@ -15,7 +15,6 @@ REM GitKrakenSetup.exe --silent
 cd GitCracken-main
 
 REM PATCH WITH GITCRACKEN
-REM cd GitCracken-0.8
 REM allow self signed certificates at bae
 REM https://stackoverflow.com/questions/40033794/yarn-unable-to-verify-the-first-certificate
 REM cmd /c yarn config set "strict-ssl" false -g
@@ -23,9 +22,12 @@ cmd /c yarn install
 cmd /c yarn build
 cmd /c yarn run gitcracken patcher
 
-
 REM DISABLE THE AUTO UPDATE EXECUTABLE
 ren "%localappdata%\gitkraken\Update.exe" noupdate
+ren "%localappdata%\gitkraken\%gitkrakenversion%\squirrel.exe" nosquirrel
+rem squirrel seems to edit the config and remove pro from licensedFeatures (10.4.0)
+ren "%localappdata%\gitkraken\gitkraken.exe" gitkraken.exe.bak
+rem might not need to remove this one, but just in case
 
 REM Find the latest GitKraken app version number
 REM https://stackoverflow.com/questions/57066888/file-name-pattern-matching-in-windows-command-line
